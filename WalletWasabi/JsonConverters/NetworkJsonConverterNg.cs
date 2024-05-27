@@ -34,6 +34,11 @@ public class NetworkJsonConverterNg : JsonConverter<Network>
 			return Network.RegTest;
 		}
 
+		if (networkString == nameof(Network.TestNet))
+		{
+			networkString = nameof(Network.RegTest);
+		}
+
 		return Network.GetNetwork(networkString);
 	}
 
