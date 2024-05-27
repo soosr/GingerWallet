@@ -20,6 +20,7 @@ public static class ConfigManagerNg
 	}
 
 	private static TResponse LoadFile<TResponse>(string filePath, JsonSerializerOptions? options = null)
+		where TResponse : IConfigNg
 	{
 		options ??= DefaultOptions;
 
@@ -31,9 +32,13 @@ public static class ConfigManagerNg
 		string jsonString = File.ReadAllText(filePath, Encoding.UTF8);
 		TResponse? result = JsonSerializer.Deserialize<TResponse>(jsonString, options);
 
-		return result is not null
-			? result
-			: throw new Newtonsoft.Json.JsonException("Unexpected null value.");
+		if (result is null)
+		{
+			throw new Newtonsoft.Json.JsonException("Unexpected null value.");
+		}
+
+		result.OnDeserialized();
+		return result;
 	}
 
 	public static TResponse LoadFile<TResponse>(string filePath, bool createIfMissing = false, JsonSerializerOptions? options = null)
