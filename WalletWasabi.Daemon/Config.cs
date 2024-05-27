@@ -40,6 +40,9 @@ public class Config
 			[ nameof(MainNetBackendUri)] = (
 				"The backend server's URL to connect to when the Bitcoin network is main",
 				GetStringValue("MainNetBackendUri", PersistentConfig.MainNetBackendUri, cliArgs)),
+			[ nameof(GingerMainNetBackendUri)] = (
+				"The Ginger backend server's URL to connect to when the Bitcoin network is main",
+				GetStringValue("MainNetBackendUri", PersistentConfig.GingerMainNetBackendUri, cliArgs)),
 			[ nameof(TestNetBackendUri)] = (
 				"The backend server's URL to connect to when the Bitcoin network is testnet",
 				GetStringValue("TestNetBackendUri", PersistentConfig.TestNetBackendUri, cliArgs)),
@@ -154,6 +157,7 @@ public class Config
 	public Network Network => GetEffectiveValue<NetworkValue, Network>(nameof(Network));
 
 	public string MainNetBackendUri => GetEffectiveValue<StringValue, string>(nameof(MainNetBackendUri));
+	public string GingerMainNetBackendUri => GetEffectiveValue<StringValue, string>(nameof(GingerMainNetBackendUri));
 	public string TestNetBackendUri => GetEffectiveValue<StringValue, string>(nameof(TestNetBackendUri));
 	public string RegTestBackendUri => GetEffectiveValue<StringValue, string>(nameof(RegTestBackendUri));
 	public string? MainNetCoordinatorUri => GetEffectiveValue<NullableStringValue, string?>(nameof(MainNetCoordinatorUri));

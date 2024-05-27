@@ -25,6 +25,10 @@ public record PersistentConfig : IConfigNg
 	[JsonPropertyName("MainNetBackendUri")]
 	public string MainNetBackendUri { get; init; } = Constants.BackendUri;
 
+	[DefaultValue(Constants.GingerBackendUri)]
+	[JsonPropertyName("GingerMainNetBackendUri")]
+	public string GingerMainNetBackendUri { get; init; } = Constants.GingerBackendUri;
+
 	[DefaultValue(Constants.TestnetBackendUri)]
 	[JsonPropertyName("TestNetClearnetBackendUri")]
 	public string TestNetBackendUri { get; init; } = Constants.TestnetBackendUri;
@@ -125,6 +129,7 @@ public record PersistentConfig : IConfigNg
 		return
 			Network == other.Network &&
 			MainNetBackendUri == other.MainNetBackendUri &&
+			GingerMainNetBackendUri == other.GingerMainNetBackendUri &&
 			TestNetBackendUri == other.TestNetBackendUri &&
 			RegTestBackendUri == other.RegTestBackendUri &&
 			MainNetCoordinatorUri == other.MainNetCoordinatorUri &&

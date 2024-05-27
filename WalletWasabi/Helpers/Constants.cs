@@ -9,6 +9,7 @@ public static class Constants
 	public const string ClientSupportBackendVersionMax = "4";
 
 	public const string BackendUri = "https://api.wasabiwallet.io/";
+	public const string GingerBackendUri = "https://api.wasabiwallet.io/";
 	public const string TestnetBackendUri = "https://api.wasabiwallet.co/";
 	public const string BackendMajorVersion = "4";
 
